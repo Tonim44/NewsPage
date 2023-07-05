@@ -4,11 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-<<<<<<< HEAD
-=======
 import android.os.Handler
 import android.os.Looper
->>>>>>> 8eff881 (Initial commit)
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -26,10 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var newsList: MutableList<News>
     private lateinit var searchView: SearchView
     private lateinit var binding: ActivityMainBinding
-<<<<<<< HEAD
-=======
     private lateinit var loading: LoadingDialog
->>>>>>> 8eff881 (Initial commit)
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,19 +33,8 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-<<<<<<< HEAD
-        recyclerView = findViewById(R.id.recyclerView)
-        val layoutManager = GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
-        layoutManager.spanSizeLookup = MySpanSizeLookup(5, 1, 2)
-        recyclerView.layoutManager = layoutManager
-
-        newsList = mutableListOf()
-        newsAdapter = NewsAdapter(newsList)
         recyclerView.adapter = newsAdapter
 
-
-=======
->>>>>>> 8eff881 (Initial commit)
         searchView = findViewById(R.id.searchView)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
@@ -66,17 +49,10 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-<<<<<<< HEAD
-        fetchNewsData()
-
-=======
->>>>>>> 8eff881 (Initial commit)
         binding.readnews.setOnClickListener {
             startActivity(Intent(this, ListReadNewsActivity::class.java))
             finish()
         }
-<<<<<<< HEAD
-=======
 
         recyclerView = findViewById(R.id.recyclerView)
         val layoutManager = GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
@@ -91,12 +67,12 @@ class MainActivity : AppCompatActivity() {
         loading.startLoading()
 
         fetchNewsData()
->>>>>>> 8eff881 (Initial commit)
     }
 
     private fun fetchNewsData() {
         val client = OkHttpClient()
-        val url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=84b8e7b897a949c4be8da6583a9d1007"
+        val url =
+            "https://newsapi.org/v2/top-headlines?country=us&apiKey=84b8e7b897a949c4be8da6583a9d1007"
 
         val request = Request.Builder()
             .url(url)
@@ -105,12 +81,9 @@ class MainActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 e.printStackTrace()
-<<<<<<< HEAD
-=======
                 runOnUiThread {
                     loading.isDismiss()
                 }
->>>>>>> 8eff881 (Initial commit)
             }
 
             @SuppressLint("NotifyDataSetChanged")
@@ -136,21 +109,20 @@ class MainActivity : AppCompatActivity() {
                             val urlToImage = newsObject.getString("urlToImage")
                             val publishedAt = newsObject.getString("publishedAt")
 
-                            val news = News(name, author, title, description, url,
-                                urlToImage, publishedAt)
+                            val news = News(
+                                name, author, title, description, url,
+                                urlToImage, publishedAt
+                            )
                             newsList.add(news)
                         }
 
                         runOnUiThread {
                             newsAdapter.notifyDataSetChanged()
-<<<<<<< HEAD
-=======
                             loading.isDismiss()
                         }
                     } ?: run {
                         runOnUiThread {
                             loading.isDismiss()
->>>>>>> 8eff881 (Initial commit)
                         }
                     }
                 }
@@ -164,8 +136,5 @@ class MainActivity : AppCompatActivity() {
         }
         newsAdapter.setNewsList(filteredNewsList)
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 8eff881 (Initial commit)
+

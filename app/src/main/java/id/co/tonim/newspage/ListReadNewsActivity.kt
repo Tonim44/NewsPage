@@ -35,16 +35,13 @@ class ListReadNewsActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences(NEWS_PREFERENCES, MODE_PRIVATE)
 
-<<<<<<< HEAD
         binding.back.setOnClickListener(View.OnClickListener { onBackPressed() })
-=======
 
         binding.back.setOnClickListener{
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
 
->>>>>>> 8eff881 (Initial commit)
         val recyclerView: RecyclerView = binding.newsListView
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
