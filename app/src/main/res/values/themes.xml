@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.NewsPage" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#76C8D3</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="Theme.NewsPage.NoActionBar">
