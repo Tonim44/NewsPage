@@ -33,6 +33,13 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        recyclerView = findViewById(R.id.recyclerView)
+        val layoutManager = GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
+        layoutManager.spanSizeLookup = MySpanSizeLookup(5, 1, 2)
+        recyclerView.layoutManager = layoutManager
+
+        newsList = mutableListOf()
+        newsAdapter = NewsAdapter(newsList)
         recyclerView.adapter = newsAdapter
 
         searchView = findViewById(R.id.searchView)
@@ -53,15 +60,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ListReadNewsActivity::class.java))
             finish()
         }
-
-        recyclerView = findViewById(R.id.recyclerView)
-        val layoutManager = GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false)
-        layoutManager.spanSizeLookup = MySpanSizeLookup(5, 1, 2)
-        recyclerView.layoutManager = layoutManager
-
-        newsList = mutableListOf()
-        newsAdapter = NewsAdapter(newsList)
-        recyclerView.adapter = newsAdapter
 
         loading = LoadingDialog(this)
         loading.startLoading()
@@ -137,4 +135,3 @@ class MainActivity : AppCompatActivity() {
         newsAdapter.setNewsList(filteredNewsList)
     }
 }
-
